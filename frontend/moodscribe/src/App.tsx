@@ -5,16 +5,12 @@ import Signup from './app/auth/Signup';
 import Signin from './app/auth/Signin';
 import PrivateRoute from './utils/PrivateRoute';
 import Dashboard from './app/pages/dashboard/Dashboard';
-// import { RootState, useAppSelector } from './redux/store';
+import { RootState, useAppSelector } from './redux/store';
 
 const App: FC = () => {
-  // const isAuthenticated = useAppSelector(
-  //   (state: RootState) => state.signin.isAuthenticated
-  // );
-
-  const isAuthenticated = localStorage.getItem('token') !== null ? true : false;
-
-  // console.log('isAuthenticated', isAuthenticated);
+  const isAuthenticated = useAppSelector(
+    (state: RootState) => state.signin.isAuthenticated
+  );
 
   return (
     <div>

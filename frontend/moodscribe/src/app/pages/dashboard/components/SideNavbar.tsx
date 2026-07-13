@@ -47,67 +47,58 @@ const SideNavbar: FC<Props> = ({ toggleNav }) => {
   const location = useLocation();
 
   return (
-    <div>
-      {' '}
-      <>
-        <div className='relative min-h-screen bg-slate-800 shadow-lg '>
-          <div className='bg-theme py-4 lg:ml-1 max-h-[100vh] overflow-y-auto '>
-            <div className='flex items-center gap-1 px-4 py-6 border-b border-slate-400'>
-              <Link to='/'>
-                <img src={Logo} alt='MoodScribe Logo' />
-              </Link>
-            </div>
-            <div className='px-2 space-y-1'>
-              {routes.map((navItem) => {
-                const isActive = navItem.route === location.pathname;
-                return (
-                  <nav key={navItem.id}>
-                    {navItem.route && (
-                      <Link
-                        to={navItem.route}
-                        onClick={() => {
-                          toggleNav();
-                        }}
-                        className={clsx(
-                          'flex w-full gap-4 justify-between items-center px-2 h-12 rounded group my-3',
-                          isActive
-                            ? 'text-teal-100 border-r-4 border-teal-100'
-                            : 'text-white'
-                        )}
-                      >
-                        <div className='flex items-center w-full gap-2 p-3 rounded-sm group-hover:text-slate-800 hover:bg-slate-300'>
-                          <div className='w-9 h-9 font-medium flex items-center justify-center text-lg'>
-                            <Icon
-                              icon={navItem.icon}
-                              className='w-5 h-5 group-hover:text-primary-500'
-                            />
-                          </div>
-                          <p className='font-medium text-left'>
-                            {navItem.name}
-                          </p>
-                        </div>
-                      </Link>
-                    )}
-                  </nav>
-                );
-              })}
-            </div>
-          </div>
-          <div
-            className='tooltip flex items-end px-9 h-96'
-            onClick={() => dispatch(signout())}
-          >
-            <Tooltip content='Logout' placement='top'>
-              <button
-                type='button'
-                className='text-white bg-cyan-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-              >
-                <Icon icon='tabler:logout' className='text-white w-7 h-7' />
-              </button>
-            </Tooltip>
-          </div>
+    <div className='flex h-full min-h-screen flex-col bg-slate-800 shadow-lg'>
+      <div className='flex-1 overflow-y-auto bg-theme py-4 md:ml-1'>
+        <div className='flex items-center gap-1 border-b border-slate-400 px-4 py-6'>
+          <Link to='/'>
+            <img src={Logo} alt='MoodScribe Logo' />
+          </Link>
         </div>
-      </>
+        <div className='space-y-1 px-2'>
+          {routes.map((navItem) => {
+            const isActive = navItem.route === location.pathname;
+            return (
+              <nav key={navItem.id}>
+                {navItem.route && (
+                  <Link
+                    to={navItem.route}
+                    onClick={() => {
+                      toggleNav();
+                    }}
+                    className={clsx(
+                      'group my-3 flex h-12 w-full items-center justify-between gap-4 rounded px-2',
+                      isActive
+                        ? 'border-r-4 border-teal-100 text-teal-100'
+                        : 'text-white',
+                    )}
+                  >
+                    <div className='flex w-full items-center gap-2 rounded-sm p-3 hover:bg-slate-300 group-hover:text-slate-800'>
+                      <div className='flex h-9 w-9 items-center justify-center text-lg font-medium'>
+                        <Icon
+                          icon={navItem.icon}
+                          className='h-5 w-5 group-hover:text-primary-500'
+                        />
+                      </div>
+                      <p className='text-left font-medium'>{navItem.name}</p>
+                    </div>
+                  </Link>
+                )}
+              </nav>
+            );
+          })}
+        </div>
+      </div>
+      <div className='shrink-0 border-t border-slate-600 px-9 py-6'>
+        <Tooltip content='Logout' placement='top'>
+          <button
+            type='button'
+            onClick={() => dispatch(signout())}
+            className='rounded-lg bg-cyan-700 px-4 py-2.5 text-center text-sm font-medium text-white hover:bg-teal-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+          >
+            <Icon icon='tabler:logout' className='h-7 w-7 text-white' />
+          </button>
+        </Tooltip>
+      </div>
     </div>
   );
 };
