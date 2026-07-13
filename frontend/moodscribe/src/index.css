@@ -18,6 +18,69 @@ body {
   width: 100%;
 }
 
+.moodscribe-datepicker-dark {
+  color-scheme: dark;
+  background-color: #1e293b;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__header {
+  background-color: #334155;
+  border-bottom-color: #475569;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__current-month,
+.moodscribe-datepicker-dark .react-datepicker-time__header,
+.moodscribe-datepicker-dark .react-datepicker__day-name,
+.moodscribe-datepicker-dark .react-datepicker__day {
+  color: #e2e8f0;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__day:hover {
+  background-color: #475569;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__day--outside-month {
+  color: #64748b;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__navigation-icon::before {
+  border-color: #e2e8f0;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__day--selected,
+.moodscribe-datepicker-dark .react-datepicker__day--keyboard-selected,
+.moodscribe-datepicker-dark .react-datepicker__time-list-item--selected {
+  background-color: #0891b2;
+  color: #fff;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__month-select,
+.moodscribe-datepicker-dark .react-datepicker__year-select,
+.moodscribe-datepicker-dark .react-datepicker-time__input {
+  background-color: #334155;
+  color: #fff;
+  border: 1px solid #475569;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__time-container {
+  border-left-color: #475569;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__time-container .react-datepicker__time,
+.moodscribe-datepicker-dark .react-datepicker__time-list {
+  background-color: #1e293b;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__time-list-item {
+  color: #e2e8f0;
+}
+
+.moodscribe-datepicker-dark .react-datepicker__time-list-item:hover {
+  background-color: #475569;
+}
+
 [type='text']:focus,
 [type='password']:focus,
 select:focus,

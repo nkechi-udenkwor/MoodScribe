@@ -1,13 +1,21 @@
 import 'chart.js/auto';
+import { useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
-import { RootState, useAppSelector } from '../../redux/store';
+import { RootState, useAppDispatch, useAppSelector } from '../../redux/store';
+import { getJournals } from '../../redux/journals/features';
 
 const Analysis = () => {
+  const dispatch = useAppDispatch();
   const { journals } = useAppSelector((state: RootState) => state.journals);
+  const hasJournals = journals.journals.length > 0;
+
+  useEffect(() => {
+    dispatch(getJournals());
+  }, [dispatch]);
 
   const data = {
     labels: journals.journals.map((entry) =>
-      new Date(entry.date).toLocaleDateString()
+      new Date(entry.date).toLocaleDateString(),
     ),
     datasets: [
       {
@@ -41,8 +49,7 @@ const Analysis = () => {
     plugins: {
       legend: {
         labels: {
-          // padding: 20, // Adjust the padding around the legend label
-          color: '#C5C5C5', // Change color of legend labels
+          color: '#C5C5C5',
         },
       },
       tooltip: {
@@ -60,7 +67,14 @@ const Analysis = () => {
   return (
     <div className='container mx-auto max-w-4xl my-14 p-4'>
       <h2 className='text-white text-2xl text-center mb-11'>Mood Chart</h2>
-      <Line data={data} options={options} />
+      <div className='relative'>
+        <Line data={data} options={options} />
+        {!hasJournals && (
+          <p className='absolute inset-0 flex items-center justify-center text-gray-400 text-sm text-center px-4'>
+            No journal entries yet. Add a journal entry to see your mood chart.
+          </p>
+        )}
+      </div>
     </div>
   );
 };
