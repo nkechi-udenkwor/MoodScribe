@@ -120,23 +120,25 @@ const NewEntry: FC = () => {
           />
         </div>
 
-        <div className='flex justify-between items-center flex-wrap bg-slate-700 bg-opacity-40 pl-4 py-4 mt-6'>
+        <div className='flex justify-between items-center flex-wrap bg-slate-700 bg-opacity-40 pl-4 py-4 mt-6 rounded-sm'>
           {mood.map((emoji, idx) => (
             <button
               type='button'
               key={idx}
-              className={clsx(
-                'flex flex-col items-center space-y-2 my-3 mr-4 hover:scale-125 transition-all duration-700 ease-in-out',
-                selectedMood === emoji ? 'shadow-xl shadow-[#facc4c]' : '',
-              )}
+              className='my-3 mr-4 flex flex-col items-center space-y-2 border-0 bg-transparent p-0 outline-none transition-all duration-500 ease-in-out hover:scale-110'
               onClick={() => handleMoodClick(emoji)}
             >
               <Icon
                 icon={emoji.icon}
                 style={{ color: emoji.name === 'Angry' ? 'red' : '#facc4c' }}
-                className='w-9 h-9'
+                className={clsx(
+                  'h-9 w-9',
+                  selectedMood === emoji && 'drop-shadow-[0_0_14px_#b99229]',
+                )}
               />
-              <span className='text-sm'>{emoji.name}</span>
+              <span aria-label={emoji.name} className='text-sm '>
+                {emoji.name}
+              </span>
             </button>
           ))}
         </div>
@@ -153,22 +155,22 @@ const NewEntry: FC = () => {
           registration={{ ...register('title') }}
           errorMessage={errors.title?.message}
           isRequired
-          className='bg-slate-700 bg-opacity-40  py-3 px-2 mt-1 text-white'
+          className='bg-slate-700 bg-opacity-40 py-3 px-2 mt-1 text-white'
         />
         <TextAreaField
           id='message'
-          placeholder='Say more about the day, how you feel.'
+          placeholder='Describe your day and your feelings in detail...'
           value={content}
           registration={{ ...register('content') }}
           errorMessage={errors.content?.message}
           hasError={errors.content}
           isRequired
-          className='bg-slate-700 bg-opacity-40  px-2 mt-4 placeholder-gray-150'
+          className='bg-slate-700 bg-opacity-40 px-2 mt-4 placeholder-gray-150'
         />
         <button
           type='submit'
           className={clsx(
-            'py-3 px-20 mb-5 mt-8 text-teal-100 font-semibold bg-slate-300 bg-opacity-50 hover:bg-cyan-500 hover:text-white border rounded-3xl',
+            'py-3 px-20 mb-5 mt-8 text-teal-100 font-semibold bg-slate-400 bg-opacity-50 hover:bg-cyan-700 hover:text-white border border-cyan-800 rounded-3xl',
             loading ? 'cursor-progress' : '',
           )}
         >

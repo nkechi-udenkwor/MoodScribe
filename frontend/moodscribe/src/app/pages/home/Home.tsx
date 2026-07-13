@@ -119,10 +119,10 @@ const Home: FC = () => {
         <section className='my-4'>
           <form
             onSubmit={handleSubmit}
-            className='p-4 bg-gray-700 bg-opacity-65 shadow-lg rounded-sm hover:bg-slate-700 transition-all duration-500 ease-out'
+            className='p-4 bg-slate-700/60 bg-opacity-65 shadow-lg rounded-sm'
           >
             <label htmlFor='newQuote' className='block'>
-              Add a new quote?
+              Add a new quote
             </label>
             <input
               type='text'
@@ -134,7 +134,7 @@ const Home: FC = () => {
             />
             <button
               type='submit'
-              className='text-center bg-cyan-700 hover:bg-cyan-500 py-2 px-4'
+              className='text-center bg-cyan-700 hover:bg-cyan-500 py-2 px-4 rounded-sm'
             >
               Add Quote
             </button>

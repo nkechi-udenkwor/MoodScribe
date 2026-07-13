@@ -39,6 +39,7 @@ const tokenExpirationMiddleware: Middleware = (store) => {
       if (signin?.token) {
         localStorage.setItem('token', signin.token);
       }
+      return next(action);
     }
 
     if (!isDispatching) {

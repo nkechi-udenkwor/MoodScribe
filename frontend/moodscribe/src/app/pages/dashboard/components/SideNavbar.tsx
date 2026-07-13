@@ -49,7 +49,7 @@ const SideNavbar: FC<Props> = ({ toggleNav }) => {
   return (
     <div className='flex h-full min-h-screen flex-col bg-slate-800 shadow-lg'>
       <div className='flex-1 overflow-y-auto bg-theme py-4 md:ml-1'>
-        <div className='flex items-center gap-1 border-b border-slate-400 px-4 py-6'>
+        <div className='flex items-center gap-1 border-b border-slate-600 px-4 py-6'>
           <Link to='/'>
             <img src={Logo} alt='MoodScribe Logo' />
           </Link>
@@ -72,7 +72,7 @@ const SideNavbar: FC<Props> = ({ toggleNav }) => {
                         : 'text-white',
                     )}
                   >
-                    <div className='flex w-full items-center gap-2 rounded-sm p-3 hover:bg-slate-300 group-hover:text-slate-800'>
+                    <div className='flex w-full items-center gap-2 rounded-sm p-3 hover:bg-slate-400 group-hover:text-slate-800'>
                       <div className='flex h-9 w-9 items-center justify-center text-lg font-medium'>
                         <Icon
                           icon={navItem.icon}
