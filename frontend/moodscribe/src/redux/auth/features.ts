@@ -117,7 +117,7 @@ const signinSlice = createSlice({
 
       const decoded: { exp: number } = jwtDecode(action.payload);
       state.expirationTime = decoded.exp;
-      localStorage.removeItem('token');
+      localStorage.setItem('token', action.payload);
     },
 
     signinFailure(state, action) {
@@ -165,7 +165,6 @@ export const signin =
       });
       const token = response.data.token;
       dispatch(signinSuccess(token));
-      localStorage.setItem('token', token);
     } catch (error) {
       dispatch(signinFailure(handleErrors(error)));
     }

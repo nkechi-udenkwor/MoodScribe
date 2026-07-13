@@ -45,7 +45,7 @@ const CustomInputField: FC<Props> = (
     errorMessage,
     className,
   },
-  ref
+  ref,
 ) => {
   const { name } = registration;
 
@@ -72,7 +72,7 @@ const CustomInputField: FC<Props> = (
               value={field.value || ''}
               onChange={field.onChange}
               onBlur={field.onBlur}
-              className={`focus-within:border-secondary focus:border-cyan-600  pb-3 w-full text-gray-400 outline-none  disabled:bg-gray-100 ${
+              className={`focus-within:border-secondary focus:border-cyan-700  pb-3 w-full text-gray-400 outline-none border-1 border-gray-700 rounded-sm  disabled:bg-gray-100 ${
                 fieldState.error ? 'border-red-500' : ''
               } ${className}`}
               placeholder={placeholder}

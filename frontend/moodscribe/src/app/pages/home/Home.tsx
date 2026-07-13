@@ -58,8 +58,8 @@ const Home: FC = () => {
 
   return (
     <div>
-      <div className='container mx-auto max-w-2xl px-4 mb-8 text-white'>
-        <section className='py-8 text-center'>
+      <div className='container mx-auto max-w-2xl px-4 text-white'>
+        <section className='pb-8 pt-3 text-center'>
           <h1 className='text-4xl tracking-wider'>
             <Icon
               icon='ph:scribble-bold'
@@ -75,13 +75,13 @@ const Home: FC = () => {
             Document your day, Discover your mood.
           </p>
         </section>
-        <section className='sm:grid grid-cols-auto-fit-100 gap-4'>
+        <section className='sm:grid grid-cols-auto-fit-100 gap-4 max-h-[50vh] overflow-y-auto pr-1'>
           {quotes.quote?.map((quote, idx) => (
             <div
               key={quote._id || idx}
               className={clsx(
-                'my-4 sm:my-0 rounded-sm  relative',
-                idx % 3 === 0 ? 'col-span-2' : 'col-span-1'
+                'my-4 sm:my-0 rounded-sm relative group overflow-hidden',
+                idx % 3 === 0 ? 'col-span-2' : 'col-span-1',
               )}
               style={{
                 background: quote.color,
@@ -90,15 +90,15 @@ const Home: FC = () => {
                 quote._id && dispatch(deleteQuote(quote._id as string))
               }
             >
-              <div className='flex justify-between items-center relative group'>
-                {idx > 3 && (
-                  <div className='absolute flex justify-center items-center bg-black bg-opacity-35 w-full h-full opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out'>
-                    <Icon
-                      icon='ic:baseline-delete'
-                      className='w-6 h-6 cursor-pointer'
-                    />
-                  </div>
-                )}
+              {idx > 3 && (
+                <div className='absolute inset-0 z-10 flex justify-center items-center bg-black bg-opacity-35 opacity-0 group-hover:opacity-100 transition-all duration-1000 ease-in-out'>
+                  <Icon
+                    icon='ic:baseline-delete'
+                    className='w-6 h-6 cursor-pointer'
+                  />
+                </div>
+              )}
+              <div className='flex justify-between items-center h-full'>
                 <p className='px-2 py-3'>
                   {idx === 0 ? (
                     <span className='block font-semibold text-lg text-gray-200'>
@@ -116,13 +116,13 @@ const Home: FC = () => {
             </div>
           ))}
         </section>
-        <section className='mt-16 mb-4'>
+        <section className='my-4'>
           <form
             onSubmit={handleSubmit}
-            className='p-4 bg-gray-700 bg-opacity-65 shadow-lg rounded-sm hover:bg-slate-700 transition-all duration-500 ease-out'
+            className='p-4 bg-slate-700/60 bg-opacity-65 shadow-lg rounded-sm'
           >
             <label htmlFor='newQuote' className='block'>
-              Add a new quote?
+              Add a new quote
             </label>
             <input
               type='text'
@@ -134,7 +134,7 @@ const Home: FC = () => {
             />
             <button
               type='submit'
-              className='text-center bg-cyan-700 hover:bg-cyan-500 py-2 px-4'
+              className='text-center bg-cyan-700 hover:bg-cyan-500 py-2 px-4 rounded-sm'
             >
               Add Quote
             </button>
