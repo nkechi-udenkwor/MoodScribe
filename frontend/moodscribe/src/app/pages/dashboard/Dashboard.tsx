@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from '../dashoardHome/Home';
+import Home from '../home/Home';
 import SideNavbar from './components/SideNavbar';
 import Journals from '../journals/Journals';
 import Analysis from '../Analysis';
@@ -22,16 +22,16 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <main className='relative flex flex-col min-h-screen lg:flex-row bg-slate-900'>
-      <section
-        className={`transform lg:transform-none inset-y-0 left-0 transition duration-300 ease-in-out  ${
+    <div className='relative bg-slate-900 h-full min-h-screen'>
+      <aside
+        className={`transform md:transform-none inset-y-0 left-0 transition duration-300 ease-in-out  ${
           mobileNav ? 'translate-x-0' : '-translate-x-full'
-        } z-50 lg:z-0 w-80 lg:w-[22%] xl:w-[22%] 2xl:w-[17%] h-screen fixed`}
+        } z-50 w-64 h-screen fixed`}
       >
         <SideNavbar toggleNav={toggleNav} />
-      </section>
+      </aside>
       {/* Mobile */}
-      <div className='block p-3 lg:hidden'>
+      <div className='block p-3 md:hidden'>
         <div className='flex items-center justify-between'>
           <button
             onClick={toggleNav}
@@ -50,13 +50,13 @@ const Dashboard = () => {
 
       <div
         onClick={toggleNav}
-        className={`fixed inset-0 h-full z-40 flex items-end bg-slate-700 bg-opacity-75 sm:items-center sm:justify-center lg:hidden ${
+        className={`fixed inset-0 h-full z-40 flex items-end bg-slate-700 bg-opacity-75 sm:items-center sm:justify-center md:hidden ${
           mobileNav ? 'translate-x-0' : '-translate-x-full'
         }`}
       ></div>
       <div className='h-8' />
 
-      <section className='lg:w-[78%] xl:w-[78%] 2xl:w-[83%] lg:ml-[22%] xl:ml-[22%] 2xl:ml-[17%] '>
+      <section className='flex flex-col items-center justify-center w-full md:ml-64 md:w-[calc(100%-16rem)]'>
         {/* <NavComponent /> */}
         <Routes>
           <Route path='/' element={<Home />} />
@@ -65,7 +65,7 @@ const Dashboard = () => {
           <Route path='/resources' element={<Resources />} />
         </Routes>
       </section>
-    </main>
+    </div>
   );
 };
 

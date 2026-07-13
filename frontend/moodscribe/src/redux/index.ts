@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { toast } from 'sonner';
+import { store } from './store';
+import { signout } from './auth/features';
 
 const toastId = 'Sonner';
 
@@ -15,6 +17,13 @@ export const handleErrors = (err: any) => {
     case 404:
     case 403:
     case 422:
+      if (response.status === 401) {
+        const authError = response.data?.error;
+        if (authError === 'Missing Token' || authError === 'Invalid Token') {
+          store.dispatch(signout());
+        }
+      }
+
       if (response.data.errors) {
         if (Array.isArray(response.data.errors)) {
           response.data.errors.forEach((each: any, idx: number) => {

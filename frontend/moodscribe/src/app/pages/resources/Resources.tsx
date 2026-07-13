@@ -32,29 +32,32 @@ const Resources: FC = () => {
 
   return (
     <>
-      <div className='flex justify-end mt-8 mb-8 p-4'>
-        <form className='w-full max-w-md mx-1'>
+      <div className='sticky top-0 z-20 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700 py-4 px-4'>
+        <form className='w-full max-w-md ml-auto'>
           <label
             htmlFor='default-search'
-            className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'
+            className='mb-2 text-sm font-medium sr-only text-white'
           >
             Search
           </label>
           <div className='relative'>
             <div className='absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none'>
-              <Icon icon='material-symbols-light:search' className='w-5 h-5' />
+              <Icon
+                icon='material-symbols-light:search'
+                className='w-5 h-5 text-gray-400'
+              />
             </div>
             <input
               type='search'
               id='default-search'
-              className='block w-full py-3 px-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-cyan-400 focus:border-cyan-400 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
+              className='block w-full py-3 px-4 ps-10 text-sm text-white border border-gray-600 rounded-lg bg-slate-700 bg-opacity-70 placeholder-gray-400 focus:ring-cyan-400 focus:border-cyan-400'
               placeholder='Search more mental health tips...'
               required
               onChange={(e) => setSearchValue(e.target.value)}
             />
             <button
               type='submit'
-              className='text-white absolute end-2.5 bottom-[5px] bg-cyan-600 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-cyan-600 dark:hover:bg-cyan-800 dark:focus:ring-cyan-800'
+              className='text-white absolute end-2.5 bottom-[5px] bg-cyan-600 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-4 py-2'
               onClick={(e) => handleSearch(e)}
             >
               Search

@@ -46,10 +46,11 @@ export const InputDateField: React.FC<InputDateFieldProps> = ({
         render={({ field }) => (
           <div className='customDatePickerWidth flex-1'>
             <DatePicker
+              calendarClassName='moodscribe-datepicker-dark'
               className={clsx(
                 'font-WorkSans focus:border-cyan-600 h-10 w-full px-2 bg-slate-700 bg-opacity-40 outline-none placeholder:text-sm disabled:bg-gray-100',
                 hasError && 'border-red-500',
-                className
+                className,
               )}
               placeholderText={placeholder}
               closeOnScroll={true}
@@ -75,7 +76,7 @@ export const InputDateField: React.FC<InputDateFieldProps> = ({
               ref={(elem) => {
                 elem &&
                   field.ref(
-                    (elem as unknown as { input: HTMLInputElement }).input
+                    (elem as unknown as { input: HTMLInputElement }).input,
                   );
               }}
               {...props}
